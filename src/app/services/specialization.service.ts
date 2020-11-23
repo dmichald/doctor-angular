@@ -17,6 +17,7 @@ export class SpecializationService {
 
 
   getSpecializations() {
+    console.log(`${this.baseUrl}/specializations`);
     return this.http.get<SpecializationListResponse>(`${this.baseUrl}/specializations`);
   }
 

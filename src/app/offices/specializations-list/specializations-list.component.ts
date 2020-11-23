@@ -14,7 +14,7 @@ export class SpecializationsListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.getSpecializations();
   }
 
   getSpecializations(): void {

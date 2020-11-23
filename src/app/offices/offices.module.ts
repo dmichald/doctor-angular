@@ -3,17 +3,19 @@ import {CommonModule} from '@angular/common';
 import {OfficesListComponent} from './offices-list/offices-list.component';
 import {OfficeDetailsComponent} from './office-details/office-details.component';
 import {SpecializationsListComponent} from './specializations-list/specializations-list.component';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
   declarations: [OfficesListComponent, OfficeDetailsComponent, SpecializationsListComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   exports: [
     OfficeDetailsComponent,
-    OfficeDetailsComponent,
-    SpecializationsListComponent
+    SpecializationsListComponent,
+    OfficesListComponent
   ]
 })
 export class OfficesModule {
