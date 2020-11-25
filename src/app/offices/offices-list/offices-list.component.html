@@ -1,7 +1,33 @@
-<mat-form-field class="example-form-field">
-  <mat-label>Clearable input</mat-label>
-  <input matInput type="text" [(ngModel)]="value">
-  <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-    <mat-icon>close</mat-icon>
-  </button>
-</mat-form-field>
+<div class="container">
+  <div class="row">
+
+    <div id="specialization-select" class="h-100">
+      <mat-form-field class="example-form-field">
+        <mat-label>Imie /Nazwisko</mat-label>
+        <input (change)="onInputChange($event)" matInput type="text" [(ngModel)]="doctorName">
+        <button mat-button *ngIf="doctorName" matSuffix mat-icon-button aria-label="Clear" (click)="onClearClick()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+
+    <div id="doctor-name-input" class="h-100">
+      <app-specializations-list (changed)="onSel($event)"></app-specializations-list>
+    </div>
+
+    <div id="city-select" class="h-100">
+      <mat-form-field appearance="fill">
+        <mat-label>Miasto:</mat-label>
+        <mat-select [(ngModel)]="city" (selectionChange)="onCitySelect()">
+          <mat-option *ngFor="let city of cities" [value]="city">
+            {{city}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+
+
+<p *ngFor="let item of offices">{{item.name}}</p>
+

@@ -9,12 +9,13 @@ import {Office} from '../../common/office';
   styleUrls: ['./offices-list.component.css']
 })
 export class OfficesListComponent implements OnInit {
-  cities: string[];
-  searchText: string;
-  offices: Office[];
 
+  cities: string[];
+  offices: Office[];
+  value = 'Clear me';
   // parameters
   specializationId: number;
+
   doctorName: string;
   city: string;
 
@@ -24,6 +25,12 @@ export class OfficesListComponent implements OnInit {
   ngOnInit(): void {
     this.getCities();
   }
+
+  onSel(id: number): void {
+    this.specializationId = id;
+    this.getOffices();
+  }
+
 
   getCities(): void {
     this.cityService.getCities().subscribe((
@@ -37,15 +44,25 @@ export class OfficesListComponent implements OnInit {
     this.officeService.getOffice(this.doctorName, this.city, this.specializationId).subscribe((
       value => {
         this.offices = value.content;
+        console.log(JSON.stringify(value));
       }
     ));
   }
 
   // tslint:disable-next-line:typedef
   onInputChange(event: any) {
-    if (this.doctorName.length > 3) {
       this.getOffices();
-    }
   }
 
+
+  // tslint:disable-next-line:typedef
+  onCitySelect() {
+    this.getOffices();
+  }
+
+  // tslint:disable-next-line:typedef
+  onClearClick() {
+    this.doctorName = '';
+    this.getOffices();
+  }
 }

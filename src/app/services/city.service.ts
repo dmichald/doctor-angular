@@ -13,7 +13,6 @@ export class CityService {
   }
 
   getCities(): Observable<CityResponse> {
-    console.log(`${this.baseUrl}/specializations`);
     return this.http.get<CityResponse>(`${this.baseUrl}/offices/cities`);
   }
 }

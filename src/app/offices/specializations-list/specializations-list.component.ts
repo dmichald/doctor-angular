@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {SpecializationService} from '../../services/specialization.service';
 import {Specialization} from '../../common/specialization';
+
 
 @Component({
   selector: 'app-specializations-list',
@@ -9,7 +10,8 @@ import {Specialization} from '../../common/specialization';
 })
 export class SpecializationsListComponent implements OnInit {
   specializations: Specialization[];
-
+  selected: number;
+  @Output() changed = new EventEmitter<number>();
   constructor(private specializationService: SpecializationService) {
   }
 
@@ -25,4 +27,8 @@ export class SpecializationsListComponent implements OnInit {
     ));
   }
 
+  // tslint:disable-next-line:typedef
+  onSelectEmit() {
+    this.changed.emit(this.selected);
+  }
 }

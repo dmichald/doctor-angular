@@ -1,1 +1,11 @@
-<p *ngFor="let spec of specializations">{{spec.name}} </p>
+
+<mat-form-field appearance="fill">
+  <mat-label>Specializacja:</mat-label>
+  <mat-select [(ngModel)]="selected" (selectionChange)="onSelectEmit()">
+    <mat-option *ngFor="let spec of specializations" [value]="spec.id">
+      {{spec.name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+
