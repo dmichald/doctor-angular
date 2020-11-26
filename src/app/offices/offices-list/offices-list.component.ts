@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {CityService} from '../../services/city.service';
 import {OfficeService} from '../../services/office.service';
 import {Office} from '../../common/office';
+import {OfficeDetails} from '../../common/OfficeDetails';
 
 @Component({
   selector: 'app-offices-list',
@@ -9,7 +10,6 @@ import {Office} from '../../common/office';
   styleUrls: ['./offices-list.component.css']
 })
 export class OfficesListComponent implements OnInit {
-
   cities: string[];
   offices: Office[];
   value = 'Clear me';

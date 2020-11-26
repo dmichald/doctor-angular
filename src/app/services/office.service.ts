@@ -3,6 +3,7 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Office} from '../common/office';
 import {Properties} from '../common/Properties';
+import {OfficeDetails} from '../common/OfficeDetails';
 
 @Injectable({
   providedIn: 'root'
@@ -29,8 +30,25 @@ export class OfficeService {
     return this.http.get<OfficeResponse>(url, {params: par});
   }
 
+  getOfficeDetails(officeId: number): Observable<OfficeDetails> {
+    return this.http.get<OfficeDetails>(`${this.baseUrl}/offices/${officeId}`);
+  }
+
+
+  getAvailableHours(officeId: number, date: string): Observable<Hours> {
+    const url = `${this.baseUrl}/offices/${officeId}/available-hours?date=${date}`;
+    console.log(url);
+    return this.http.get<Hours>(url);
+  }
+
 }
 
 interface OfficeResponse {
   content: Office[];
 }
+
+export interface Hours {
+  hours: string[];
+}
+
+

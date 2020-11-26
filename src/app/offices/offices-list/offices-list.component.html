@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
 
-    <div id="specialization-select" class="h-100">
-      <mat-form-field class="example-form-field">
+    <div id="specialization-select" class="h-100 m-3">
+      <mat-form-field appearance="fill">
         <mat-label>Imie /Nazwisko</mat-label>
         <input (change)="onInputChange($event)" matInput type="text" [(ngModel)]="doctorName">
         <button mat-button *ngIf="doctorName" matSuffix mat-icon-button aria-label="Clear" (click)="onClearClick()">
@@ -11,11 +11,11 @@
       </mat-form-field>
     </div>
 
-    <div id="doctor-name-input" class="h-100">
+    <div id="doctor-name-input" class="h-100 m-3">
       <app-specializations-list (changed)="onSel($event)"></app-specializations-list>
     </div>
 
-    <div id="city-select" class="h-100">
+    <div id="city-select" class="h-100 m-3">
       <mat-form-field appearance="fill">
         <mat-label>Miasto:</mat-label>
         <mat-select [(ngModel)]="city" (selectionChange)="onCitySelect()">
@@ -25,9 +25,24 @@
         </mat-select>
       </mat-form-field>
     </div>
+
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3" *ngFor="let office of offices">
+      <div class="card m-3">
+        <img class="card-img-top" src="https://animalhome.pl/wp-content/uploads/2019/01/449099-PEVZVX-648-960x640.jpg" alt="Vet">
+        <h4 class="card-title">{{office.name}}</h4>
+        <p class="card-text">{{office.specializationName}}</p>
+        <a href="http://v4-alpha.getbootstrap.com/components/card/" mat-button color="primary">SZCZEGOLY/REZERWUJ</a>
+      </div>
+    </div>
   </div>
 </div>
 
 
-<p *ngFor="let item of offices">{{item.name}}</p>
+
+
 

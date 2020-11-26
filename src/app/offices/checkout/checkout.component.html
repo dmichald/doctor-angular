@@ -1,0 +1,78 @@
+
+<div class="jumbotron ">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <h2>Rezerwacja</h2>
+        <form [formGroup]="checkoutFormGroup" (ngSubmit)="onSubmit()">
+
+          <div class="form-group">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Wybierz date</mat-label>
+              <input matInput formControlName="date" [(ngModel)]="selectedDate" (dateChange)="onDateChanged()"
+                     [matDatepickerFilter]="myFilter"
+                     [min]="minDate" [max]="maxDate" [matDatepicker]="picker" [formControl]="date">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error *ngIf="date.invalid">Wybierz godzinę</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="form-group">
+            <mat-form-field appearance="fill">
+              <mat-label>Godzina</mat-label>
+              <mat-select required [formControl]="startTime">
+                <mat-option *ngFor="let hour of hours" [value]="hour">
+                  {{hour}}
+                </mat-option>
+              </mat-select>
+              <mat-hint>Aby zobaczyć godziny wybierz datę</mat-hint>
+              <mat-error *ngIf="startTime.invalid"> Wybierz godzinę</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="form-group">
+            <mat-form-field appearance="fill">
+              <mat-label>Wprowadz imie</mat-label>
+              <input matInput placeholder="Imie" [formControl]="name" required>
+              <mat-error *ngIf="name.invalid">Wprowadz imie</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="form-group">
+            <mat-form-field appearance="fill">
+              <mat-label>Wprowadz nazwisko</mat-label>
+              <input matInput placeholder="Nazwisko" [formControl]="surname" required>
+              <mat-error *ngIf="name.invalid">Wprowadz nazwisko</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="form-group">
+            <mat-form-field appearance="fill">
+              <mat-label>Nr. telefonu</mat-label>
+              <input type="text" matInput placeholder="Np. 999782812" [formControl]="telephoneNumber">
+              <mat-hint>Wprowadz numer bez spacji</mat-hint>
+              <mat-error *ngIf="telephoneNumber.invalid">Wprowadz poprawny numer</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="form-group">
+            <mat-form-field appearance="fill">
+              <mat-label>Enter your email</mat-label>
+              <input matInput placeholder="pat@example.com" required [formControl]="email">
+              <mat-error *ngIf="email.invalid">Wprowadz poprawny email</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="form-group">
+            <button type="submit" [disabled]="!checkoutFormGroup.valid" mat-raised-button color="primary"
+                    class="btn-lg">Rezerwuj
+            </button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
