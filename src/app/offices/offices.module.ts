@@ -16,6 +16,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {OfficesRoutingModule} from './offices-routing.module';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatTooltipModule,
     MatCardModule,
     MatGridListModule,
+    OfficesRoutingModule
   ],
   exports: [
     OfficeDetailsComponent,

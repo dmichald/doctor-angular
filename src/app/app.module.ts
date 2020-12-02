@@ -14,12 +14,16 @@ import {MatButtonModule} from '@angular/material/button';
 import { RegisterComponent } from './register/register.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSelectModule} from '@angular/material/select';
+import { AppRoutingModule } from './app-routing.module';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { OfficesRoutingModule } from './offices/offices-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +37,9 @@ import {MatSelectModule} from '@angular/material/select';
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    MatSelectModule
+    MatSelectModule,
+    AppRoutingModule,
+    OfficesRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
