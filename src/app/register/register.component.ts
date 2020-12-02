@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Specialization} from '../common/specialization';
 import {SpecializationService} from '../services/specialization.service';
-import {MustMatch} from '../utils/mus-match-validator';
+import {MyErrorStateMatcher} from '../utils/mus-match-validator';
+import {OfficeService} from '../services/office.service';
 
 @Component({
   selector: 'app-register',
@@ -12,12 +13,14 @@ import {MustMatch} from '../utils/mus-match-validator';
 export class RegisterComponent implements OnInit {
 
   hide = true;
+  hideMatch = true;
   specializations: Specialization[];
   form: FormGroup;
   userForm:FormGroup;
   spec: Specialization[];
+  matcher = new MyErrorStateMatcher();
 
-  constructor(private specializationService: SpecializationService, private fb: FormBuilder) {
+  constructor(private specializationService: SpecializationService, private fb: FormBuilder, private officeService: OfficeService) {
   }
 
   ngOnInit(): void {
@@ -26,10 +29,9 @@ export class RegisterComponent implements OnInit {
     this.userForm = this.fb.group({
       username: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      matchingPassword: ['', Validators.required]
-    }, {
-      validator: MustMatch('password', 'matchingPassword')
-    });
+        matchingPassword: ['', [Validators.required]]
+      }, {validator: this.checkPasswords}
+    );
 
 
     this.form = this.fb.group({
@@ -37,7 +39,7 @@ export class RegisterComponent implements OnInit {
       doctor: this.fb.group({
         name: ['', [Validators.required]],
         surname: ['', [Validators.required]],
-        specializations: [this.spec, [Validators.required]]
+        specializationsSet: [this.spec, [Validators.required]]
       }),
 
       contact: this.fb.group({
@@ -53,7 +55,9 @@ export class RegisterComponent implements OnInit {
 
       startWorkAt: ['', [Validators.required]],
       finishWorkAt: ['', [Validators.required]],
-      oneVisitDuration: ['', [Validators.required]]
+      oneVisitDuration: ['', [Validators.required]],
+      price: ['', [Validators.required, Validators.min(1), Validators.max(1000)]]
+
     });
 
 
@@ -64,11 +68,24 @@ export class RegisterComponent implements OnInit {
     ));
   }
 
+  get f() {
+    return this.userForm.controls;
+  }
+
+  checkPasswords(group: FormGroup) { // here we have the 'passwords' group
+    let pass = group.get('password').value;
+    let confirmPass = group.get('matchingPassword').value;
+
+    return pass === confirmPass ? null : {notSame: true};
+  }
+
   get username() {return this.userForm.get('username') as FormControl;}
   get password() {return this.userForm.get('password') as FormControl;}
   get matchingPassword() {return this.userForm.get('matchingPassword') as FormControl;}
 
-  get docSpec() {return this.form.get('doctor').get('specializations') as FormControl;}
+  get docSpec() {
+    return this.form.get('doctor').get('specializationsSet') as FormControl;
+  }
   get docName() {return this.form.get('doctor').get('name') as FormControl;}
   get docSur() {return this.form.get('doctor').get('surname') as FormControl;}
 
@@ -83,10 +100,9 @@ export class RegisterComponent implements OnInit {
   get endWork() {return this.form.get('finishWorkAt')as FormControl;}
   get visitDuration () {return this.form.get('oneVisitDuration') as FormControl;}
 
-
-
-
-
+  get price() {
+    return this.form.get('price') as FormControl;
+  }
 
   workHours = () => {
     const array: string[] = [];
@@ -105,5 +121,17 @@ export class RegisterComponent implements OnInit {
   };
 
 
+  onSubmit() {
+    let postReq = {
+      office: this.form.value,
+      owner: this.userForm.value
+    };
 
+    console.log(postReq);
+    if (this.form.valid && this.userForm.valid) {
+      this.officeService.addOffice(postReq)
+        .subscribe(value => console.log(value));
+    }
+
+  }
 }

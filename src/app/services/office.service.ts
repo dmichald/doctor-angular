@@ -41,6 +41,11 @@ export class OfficeService {
     return this.http.get<Hours>(url);
   }
 
+  addOffice(requestBody) {
+    const url = `${this.baseUrl}/register`;
+    return this.http.post(url, requestBody);
+  }
+
 }
 
 interface OfficeResponse {
