@@ -1,7 +1,7 @@
 <div class="container">
 <mat-card>
   <mat-card-content>
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <h2>Log In</h2>
       <mat-error *ngIf="loginInvalid">
         The username and password were not recognised
@@ -19,12 +19,13 @@
         </mat-error>
       </mat-form-field>
         <button mat-raised-button color="primary">Login</button>
+      <mat-error *ngIf="error"> {{error}}</mat-error>
     </form>
     <div class="mt-2">
       <p class="mb-0">Nie masz konta?</p>
-      <a mat-raised-button href="https://www.google.com/" target="_blank">Zarejestruj się.</a>
+      <a routerLink="/register">Zarejestruj się.</a>
     </div>
-    <a mat-raised-button href="https://www.google.com/" target="_blank" class="mt-2">Zapomniałeś hasła? Kliknij!</a>
+    <a mat-raised-button (click)="openDialog()">Zapomniałeś hasła? Kliknij!</a>
   </mat-card-content>
 </mat-card>
 </div>
