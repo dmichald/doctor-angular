@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     private authenticationService: AuthenticationService
   ) {
     if (this.authenticationService.currentUserValue) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/manage/office']);
     }
   }
 
@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
       .subscribe({
         next: () => {
 
-          const returnUrl = '/';
+          const returnUrl = '/manage/office';
           this.router.navigate([returnUrl]);
         },
         error: error => {

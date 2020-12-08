@@ -6,7 +6,11 @@
   </button>
   <ul class="navbar-nav px-3">
     <li class="nav-item text-nowrap">
-      <a class="nav-link" href="#">Sign out</a>
+      <div class="d-inline">
+        <a class="nav-item nav-link" routerLink="/">Home</a>
+        <a class="nav-item nav-link" (click)="logout()">Logout</a>
+      </div>
+
     </li>
   </ul>
 </nav>
@@ -15,15 +19,16 @@
     <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
       <div class="sidebar-sticky pt-0">
         <div class="list-group">
-          <button type="button" class="list-group-item list-group-item-action">Rezerwacje</button>
-          <button type="button" class="list-group-item list-group-item-action">Gabinet</button>
-          <button type="button" class="list-group-item list-group-item-action">Konto</button>
+          <button routerLink="manage/reservations" type="button" class="list-group-item list-group-item-action">Rezerwacje
+          </button>
+          <button routerLink="manage/office" type="button" class="list-group-item list-group-item-action">Gabinet</button>
+          <button routerLink="manage/account" type="button" class="list-group-item list-group-item-action">Konto</button>
         </div>
       </div>
     </nav>
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
       <div class="container-fluid">
-        <app-manage-office></app-manage-office>
+        <router-outlet></router-outlet>
       </div>
 
     </main>
