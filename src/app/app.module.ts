@@ -19,6 +19,9 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {OfficesRoutingModule} from './offices/offices-routing.module';
 import {JwtInterceptor} from './interceptors/JwtInterceptor';
 import {ErrorInterceptor} from './interceptors/ErrorInterceptor';
+import { OfficeManagementRoutingModule } from './office-management/office-management-routing.module';
+import {OfficeManagementModule} from './office-management/office-management.module';
+
 
 @NgModule({
   declarations: [
@@ -42,7 +45,9 @@ import {ErrorInterceptor} from './interceptors/ErrorInterceptor';
     MatIconModule,
     MatSelectModule,
     AppRoutingModule,
-    OfficesRoutingModule
+    OfficeManagementModule,
+    OfficesRoutingModule,
+    OfficeManagementRoutingModule,
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
