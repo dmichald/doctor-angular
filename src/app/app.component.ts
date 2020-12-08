@@ -16,7 +16,7 @@ export class AppComponent {
   loadScripts() {
     const dynamicScripts = [
       'https://code.jquery.com/jquery-3.5.1.slim.min.js',
-      'https://getbootstrap.com/docs/4.5/dist/js/bootstrap.bundle.min.js'
+      'https://getbootstrap.com/docs/4.5/dist/js/bootstrap.bundle.min.js',
     ];
     for (let i = 0; i < dynamicScripts.length; i++) {
       const node = document.createElement('script');

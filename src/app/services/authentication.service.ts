@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 import {User} from '../common/User';
 import {environment} from '../../environments/environment';
 
@@ -39,6 +39,10 @@ export class AuthenticationService {
       }
       )
     );
+  }
+
+  isAuthenticated(): boolean {
+    return localStorage.getItem('currentUser') != null;
   }
 
   logout() {

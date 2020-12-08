@@ -21,6 +21,11 @@ import {JwtInterceptor} from './interceptors/JwtInterceptor';
 import {ErrorInterceptor} from './interceptors/ErrorInterceptor';
 import { OfficeManagementRoutingModule } from './office-management/office-management-routing.module';
 import {OfficeManagementModule} from './office-management/office-management.module';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { HeaderComponent } from './header/header.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -29,7 +34,8 @@ import {OfficeManagementModule} from './office-management/office-management.modu
     LoginComponent,
     RegisterComponent,
     PageNotFoundComponent,
-    DialogOverviewExampleDialog
+    DialogOverviewExampleDialog,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +54,10 @@ import {OfficeManagementModule} from './office-management/office-management.modu
     OfficeManagementModule,
     OfficesRoutingModule,
     OfficeManagementRoutingModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    FlexLayoutModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
