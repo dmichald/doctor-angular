@@ -1,7 +1,6 @@
-<div class="header">
+<div class="header sticky-top">
   <a class="logo">Twoj pupil</a>
   <div class="header-right">
-    <a href="#home">Strona główna</a>
     <a href="#contact">Szukaj</a>
     <a  *ngIf="isAuthenticated" routerLink="/manage/office">Mój gabinet</a>
     <a  *ngIf="!isAuthenticated" (click)="toLoginPage()">Zaloguj się</a>

@@ -22,7 +22,7 @@ import {ErrorInterceptor} from './interceptors/ErrorInterceptor';
 import { OfficeManagementRoutingModule } from './office-management/office-management-routing.module';
 import {OfficeManagementModule} from './office-management/office-management.module';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent } from './offices/header/header.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -35,7 +35,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     RegisterComponent,
     PageNotFoundComponent,
     DialogOverviewExampleDialog,
-    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -62,6 +61,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+  ],
+  exports: [
   ],
   bootstrap: [AppComponent]
 })

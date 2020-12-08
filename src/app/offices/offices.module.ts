@@ -17,10 +17,12 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {OfficesRoutingModule} from './offices-routing.module';
+import {AppModule} from '../app.module';
+import {HeaderComponent} from './header/header.component';
 
 
 @NgModule({
-  declarations: [OfficesListComponent, OfficeDetailsComponent, SpecializationsListComponent, CheckoutComponent],
+  declarations: [OfficesListComponent, OfficeDetailsComponent, SpecializationsListComponent, CheckoutComponent, HeaderComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -36,13 +38,14 @@ import {OfficesRoutingModule} from './offices-routing.module';
     MatTooltipModule,
     MatCardModule,
     MatGridListModule,
-    OfficesRoutingModule
+    OfficesRoutingModule,
   ],
   exports: [
     OfficeDetailsComponent,
     SpecializationsListComponent,
     OfficesListComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    HeaderComponent
   ]
 })
 export class OfficesModule {
