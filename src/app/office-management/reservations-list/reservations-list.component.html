@@ -1,19 +1,21 @@
-
-
-<div
-  class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-
-  <div class="btn-toolbar mb-2 mb-md-0">
-    <div class="btn-group mr-2">
-      <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+<mat-label><h1 class="mt-2 font-weight-light">Rezerwacje</h1></mat-label>
+<mat-divider class="mb-2"></mat-divider>
+<div class="row">
+  <div class="col-md-12 d-flex flex-row justify-content-center">
+    <div class="ml-2 mr-2">
+      <button style="min-width: 130px;" class="h-75 p-0" mat-stroked-button>Eksportuj</button>
     </div>
-    <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-      <span data-feather="calendar"></span>
-      This week
-    </button>
+
+    <mat-form-field appearance="fill">
+      <mat-select [(value)]="selected" >
+        <mat-option [value]="0"> Dziś</mat-option>
+        <mat-option [value]="6"> Tydzień</mat-option>
+        <mat-option [value]="29"> Miesiąc</mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
 </div>
-<h2 class="h2">Rezerwacje</h2>
+
 <div class="accordion" id="accordionExample">
   <div class="card">
     <div class="card-header" id="headingOne">

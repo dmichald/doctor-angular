@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./reservations-list.component.css']
 })
 export class ReservationsListComponent implements OnInit {
+  selected = 0;
 
   constructor() { }
 

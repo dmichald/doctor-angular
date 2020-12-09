@@ -1,156 +1,178 @@
-<div class="jumbotron ">
+<app-header></app-header>
+<div class="jumbotron p-4">
   <div class="container">
     <div class="row">
-      <div class="col-md-6 offset-md-3">
-        <h2>Rejestracja</h2>
-
-        <form [formGroup]="userForm">
-          <div class="form-group">
-            <mat-form-field appearance="fill">
-              <mat-label>Enter your email</mat-label>
-              <input matInput placeholder="pat@example.com" required [formControl]="username">
-              <mat-error *ngIf="username.invalid"> Wprowadz poprawny email</mat-error>
-            </mat-form-field>
-          </div>
-
-          <div class="form-group">
-            <mat-form-field appearance="fill">
-              <mat-label>Wprowadź hasło</mat-label>
-              <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password">
-              <mat-error *ngIf="password.invalid"> Wprowadź hasło. Min. 6 znaków.</mat-error>
-            </mat-form-field>
-          </div>
-
-          <div class="form-group">
-            <mat-form-field appearance="fill">
-              <mat-label>Powtórz hasło</mat-label>
-              <input matInput [type]="hide ? 'password' : 'text'" [formControl]="matchingPassword" [errorStateMatcher]="matcher">
-              <mat-error *ngIf="userForm.hasError('notSame')"> Hasła muszą być identyczne</mat-error>
-            </mat-form-field>
-          </div>
-        </form>
-
-        <form [formGroup]="form">
-
-
-          <div class="form-group">
-            <mat-form-field appearance="fill">
-              <mat-label>Wprowadz imie</mat-label>
-              <input matInput placeholder="Imie" required [formControl]="docName">
-              <mat-error *ngIf="docName.invalid"> Pole wymagane</mat-error>
-            </mat-form-field>
-          </div>
-
-          <div class="form-group">
-            <mat-form-field appearance="fill">
-              <mat-label>Wprowadz nazwisko</mat-label>
-              <input matInput placeholder="Nazwisko" required [formControl]="docSur">
-              <mat-error *ngIf="docSur.invalid"> Pole wymagane</mat-error>
-            </mat-form-field>
-          </div>
-
-          <mat-form-field appearance="fill">
-            <mat-label>Specializacja</mat-label>
-            <mat-select multiple [formControl]="docSpec">
-              <mat-option *ngFor="let specialization of specializations"
-                          [value]="specialization.id">{{specialization.name}}</mat-option>
-            </mat-select>
-            <mat-error *ngIf="docSpec.invalid"> Pole wymagane</mat-error>
-          </mat-form-field>
-
-          <div class="form-group">
-            <mat-form-field appearance="fill">
-              <mat-label>Nr. telefonu służbowego</mat-label>
-              <input type="text" matInput placeholder="Np. 999782812" [formControl]="contactTel">
-              <mat-hint>Wprowadz numer bez spacji</mat-hint>
-              <mat-error *ngIf="contactTel.invalid"> Pole wymagane</mat-error>
-            </mat-form-field>
-          </div>
-
-          <div class="form-group">
-            <mat-form-field appearance="fill">
-              <mat-label>Email służbowy</mat-label>
-              <input matInput placeholder="pat@example.com" required [formControl]="contactEmail">
-              <mat-error *ngIf="contactEmail.invalid"> Wprowadz poprawny email</mat-error>
-            </mat-form-field>
-          </div>
-
-          <div class="form-group">
-            <mat-form-field appearance="fill">
-              <mat-label>Ulica</mat-label>
-              <input type="text" matInput placeholder="Np. ul. 3 Maja 32" [formControl]="addressStreet">
-              <mat-hint>Ulica na której znajduje się biuro</mat-hint>
-              <mat-error *ngIf="addressStreet.invalid"> Pole wymagane</mat-error>
-            </mat-form-field>
-          </div>
-
-          <div class="form-group">
-            <mat-form-field appearance="fill">
-              <mat-label>Kod pocztowy</mat-label>
-              <input type="text" matInput placeholder="XX-XXX" [formControl]="addressCode">
-              <mat-error *ngIf="addressCode.invalid"> Pole wymagane</mat-error>
-            </mat-form-field>
-          </div>
-
-          <div class="form-group">
-            <mat-form-field appearance="fill">
-              <mat-label>Miasto</mat-label>
-              <input type="text" matInput [formControl]="addressCity">
-              <mat-error *ngIf="addressCity.invalid"> Pole wymagane</mat-error>
-            </mat-form-field>
-          </div>
-
-          <div class="form-group">
-            <mat-form-field appearance="fill">
-              <mat-label>Godzina rozpoczęcia pracy</mat-label>
-              <mat-select [formControl]="startWork">
-                <mat-option *ngFor="let hour of workHours()" [value]="hour">
-                  {{hour}}
-                </mat-option>
-              </mat-select>
-              <mat-error *ngIf="startWork.invalid"> Pole wymagane</mat-error>
-            </mat-form-field>
-
+      <div class="col-md-4">
+        <mat-card>
+          <h1 class="h1">Konto</h1>
+          <hr>
+          <form [formGroup]="userForm">
             <div class="form-group">
               <mat-form-field appearance="fill">
-                <mat-label>Godzina zakończenia pracy</mat-label>
-                <mat-select [formControl]="endWork">
-                  <mat-option *ngFor="let hour of workHours()" [value]="hour">
-                    {{hour}}
-                  </mat-option>
-                </mat-select>
-                <mat-error *ngIf="endWork.invalid"> Pole wymagane</mat-error>
+                <mat-label>Enter your email</mat-label>
+                <input matInput placeholder="pat@example.com" required [formControl]="username">
+                <mat-error *ngIf="username.invalid"> Wprowadz poprawny email</mat-error>
               </mat-form-field>
             </div>
 
             <div class="form-group">
               <mat-form-field appearance="fill">
-                <mat-label>Czas trwania wizyty</mat-label>
-                <mat-select [formControl]="visitDuration">
-                  <mat-option *ngFor="let duration of visitDurations()" [value]="duration" class="text-center">
-                    {{duration}}
-                  </mat-option>
-                </mat-select>
-                <mat-hint>Czas trwania wizyty w minutach</mat-hint>
-                <mat-error *ngIf="visitDuration.invalid"> Pole wymagane</mat-error>
+                <mat-label>Wprowadź hasło</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password">
+                <mat-error *ngIf="password.invalid"> Wprowadź hasło. Min. 6 znaków.</mat-error>
               </mat-form-field>
             </div>
 
             <div class="form-group">
               <mat-form-field appearance="fill">
-                <mat-label>Cena za wizyte</mat-label>
-                <input type="number" min="1" matInput [formControl]="price">
-                <mat-error *ngIf="price.invalid"> Pole wymagane</mat-error>
+                <mat-label>Powtórz hasło</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" [formControl]="matchingPassword"
+                       [errorStateMatcher]="matcher">
+                <mat-error *ngIf="userForm.hasError('notSame')"> Hasła muszą być identyczne</mat-error>
               </mat-form-field>
             </div>
+          </form>
+        </mat-card>
+      </div>
+      <div class="col-md-8">
 
-            <div class="form-group">
-              <button type="submit" mat-raised-button color="primary"  (click)="onSubmit()"
-                      class="btn-lg">Załóż konto
-              </button>
+        <mat-card>
+          <h1>Informacje o gabinecie</h1>
+          <hr>
+          <form [formGroup]="form">
+            <div class="row">
+              <div class="col-md-6">
+                <h3>Specialista</h3>
+                <hr>
+                <div class="form-group">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Wprowadz imie</mat-label>
+                    <input matInput placeholder="Imie" required [formControl]="docName">
+                    <mat-error *ngIf="docName.invalid"> Pole wymagane</mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="form-group">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Wprowadz nazwisko</mat-label>
+                    <input matInput placeholder="Nazwisko" required [formControl]="docSur">
+                    <mat-error *ngIf="docSur.invalid"> Pole wymagane</mat-error>
+                  </mat-form-field>
+                </div>
+
+                <mat-form-field appearance="fill">
+                  <mat-label>Specializacja</mat-label>
+                  <mat-select multiple [formControl]="docSpec">
+                    <mat-option *ngFor="let specialization of specializations"
+                                [value]="specialization.id">{{specialization.name}}</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="docSpec.invalid"> Pole wymagane</mat-error>
+                </mat-form-field>
+
+                <h3>Dane kontaktowe</h3>
+                <hr>
+                <div class="form-group">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Nr. telefonu służbowego</mat-label>
+                    <input type="text" matInput placeholder="Np. 999782812" [formControl]="contactTel">
+                    <mat-hint>Wprowadz numer bez spacji</mat-hint>
+                    <mat-error *ngIf="contactTel.invalid"> Pole wymagane</mat-error>
+                  </mat-form-field>
+                </div>
+
+                <div class="form-group">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Email służbowy</mat-label>
+                    <input matInput placeholder="pat@example.com" required [formControl]="contactEmail">
+                    <mat-error *ngIf="contactEmail.invalid"> Wprowadz poprawny email</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <h3>Adres</h3>
+                <hr>
+                <div class="form-group">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Ulica</mat-label>
+                    <input type="text" matInput placeholder="Np. ul. 3 Maja 32" [formControl]="addressStreet">
+                    <mat-hint>Ulica na której znajduje się biuro</mat-hint>
+                    <mat-error *ngIf="addressStreet.invalid"> Pole wymagane</mat-error>
+                  </mat-form-field>
+                </div>
+
+                <div class="form-group">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Kod pocztowy</mat-label>
+                    <input type="text" matInput placeholder="XX-XXX" [formControl]="addressCode">
+                    <mat-error *ngIf="addressCode.invalid"> Pole wymagane</mat-error>
+                  </mat-form-field>
+                </div>
+
+                <div class="form-group">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Miasto</mat-label>
+                    <input type="text" matInput [formControl]="addressCity">
+                    <mat-error *ngIf="addressCity.invalid"> Pole wymagane</mat-error>
+                  </mat-form-field>
+                </div>
+                <h3>Godziny pracy</h3>
+                <hr>
+                <div class="form-group">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Godzina rozpoczęcia pracy</mat-label>
+                    <mat-select [formControl]="startWork">
+                      <mat-option *ngFor="let hour of workHours()" [value]="hour">
+                        {{hour}}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="startWork.invalid"> Pole wymagane</mat-error>
+                  </mat-form-field>
+
+                  <div class="form-group">
+                    <mat-form-field appearance="fill">
+                      <mat-label>Godzina zakończenia pracy</mat-label>
+                      <mat-select [formControl]="endWork">
+                        <mat-option *ngFor="let hour of workHours()" [value]="hour">
+                          {{hour}}
+                        </mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="endWork.invalid"> Pole wymagane</mat-error>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="form-group">
+                    <mat-form-field appearance="fill">
+                      <mat-label>Czas trwania wizyty</mat-label>
+                      <mat-select [formControl]="visitDuration">
+                        <mat-option *ngFor="let duration of visitDurations()" [value]="duration" class="text-center">
+                          {{duration}}
+                        </mat-option>
+                      </mat-select>
+                      <mat-hint>Czas trwania wizyty w minutach</mat-hint>
+                      <mat-error *ngIf="visitDuration.invalid"> Pole wymagane</mat-error>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="form-group">
+                    <mat-form-field appearance="fill">
+                      <mat-label>Cena za wizyte</mat-label>
+                      <input type="number" min="1" matInput [formControl]="price">
+                      <mat-error *ngIf="price.invalid"> Pole wymagane</mat-error>
+                    </mat-form-field>
+                  </div>
+
+                </div>
+              </div>
+
+
+              <div class="form-group" style="margin-left: 40%">
+                <button type="submit" mat-raised-button color="primary" (click)="onSubmit()"
+                        class="btn-lg">Załóż konto
+                </button>
+              </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </mat-card>
+
 
       </div>
     </div>

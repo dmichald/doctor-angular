@@ -1,0 +1,21 @@
+.bg-image{
+  background-image: url(http://www.twojweterynarz.com/images/slider/slide04.jpg);
+  background-size: cover;
+  background-color: #cccccc;
+  height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.main-text {
+
+  font-weight: bold;
+  text-shadow: 2px 2px gray;
+  text-align: left;
+  position: absolute;
+  top: 50%;
+  left: 43%;
+  transform: translate(-75%, -90%);
+  color: white;
+}

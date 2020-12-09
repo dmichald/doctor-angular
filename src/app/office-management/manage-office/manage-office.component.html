@@ -118,18 +118,18 @@
         </div>
       </form>
       <hr>
-      <span> Specializacje</span>
-      <div >
+      <span> Usuń specializacje</span>
+      <div class="mat-chip-list-wrapper">
 
         <mat-chip-list #chipList class="mat-chip-list-stacked " aria-label="Color selection">
-          <mat-chip *ngFor="let docSpec of doctorSpecializations" [removable]="true" (removed)="onSpecRemoved(docSpec)">
+          <mat-chip *ngFor="let docSpec of doctorSpecializations" [removable]="true" (removed)="onSpecRemoved(docSpec)" class="text-center">
             {{docSpec.name}}
             <mat-icon matChipRemove>cancel</mat-icon>
           </mat-chip>
         </mat-chip-list>
       </div>
       <hr>
-      <span>Dodaj specializacje</span>
+      <span>Dodaj specializacje</span> <br>
       <mat-form-field appearance="fill">
         <mat-label>Dodaj specializacje</mat-label>
         <mat-select>

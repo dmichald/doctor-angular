@@ -7,3 +7,18 @@
 .example-full-width {
   width: 100%;
 }
+
+.mat-chip-list-wrapper {
+  flex-direction: column;
+  align-items: center;
+  margin: 4px;
+}
+
+.chips{
+  width: 200px;
+  justify-content: center;
+}
+
+.export-button{
+  min-width: 130px; border: 2px solid dimgrey !important;
+}

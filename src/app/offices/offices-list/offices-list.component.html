@@ -1,5 +1,10 @@
 <app-header></app-header>
-<div class="container ">
+<div class="container">
+  <div class="bg-image">
+    <div class="main-text">
+      <h1 style="font-size: 40px">Wyszukaj specialistę. <br> Umów wizytę.</h1>
+    </div>
+  </div>
   <div class="row d-flex justify-content-center">
 
     <div id="specialization-select" class="h-100 m-3">
@@ -35,8 +40,8 @@
     <div class="col-md-4" *ngFor="let office of offices">
       <div class="card m-3">
         <img class="card-img-top" src="https://animalhome.pl/wp-content/uploads/2019/01/449099-PEVZVX-648-960x640.jpg" alt="Vet">
-        <h4 class="card-title">{{office.name}}</h4>
-        <p class="card-text">{{office.specializationName}}</p>
+        <h4 class="card-title" style="font-size: 1.25rem">{{office.name}}</h4>
+        <p class="card-text font-weight-light">{{office.specializationName}}</p>
         <a routerLink="{{office.id}}"  mat-button color="primary">SZCZEGOLY/REZERWUJ</a>
       </div>
     </div>

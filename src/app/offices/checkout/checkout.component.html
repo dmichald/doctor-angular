@@ -1,5 +1,5 @@
 
-<div class="jumbotron ">
+<div class="jumbotron m-0 p-0" style="background-color: white">
   <div class="container">
     <div class="row">
       <div class="col-md-6 offset-md-3">
@@ -16,6 +16,7 @@
               <mat-datepicker #picker></mat-datepicker>
               <mat-error *ngIf="date.invalid">Wybierz godzinę</mat-error>
             </mat-form-field>
+            <div class="alert alert-danger" *ngIf="(hours != null && hours.length == 0)"> Brak dostępnych godzin w podanym terminie. </div>
           </div>
 
           <div class="form-group">

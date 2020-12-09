@@ -78,7 +78,9 @@ export class CheckoutComponent implements OnInit {
 
   onDateChanged(): void {
     console.log(this.selectedDate);
-    const formatDate = `${this.selectedDate.getFullYear()}-${this.selectedDate.getMonth()}-${this.selectedDate.getDay()}`;
+    const formatDate = `${this.selectedDate.getFullYear()}-${this.selectedDate.getMonth() + 1}-${this.selectedDate.getDate()}`;
+    console.log("DATE: " + formatDate)
+
     this.getAvailableHours(1, formatDate);
     console.log('hours' + this.hours);
   }

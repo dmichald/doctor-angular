@@ -1,29 +1,63 @@
 <app-header></app-header>
 <div class="jumbotron">
   <div class="container">
-    <mat-card class="example-card">
-      <mat-card-header>
-        <div mat-card-avatar></div>
-        <mat-card-title>lek. Marcin Durczok</mat-card-title>
-        <mat-card-subtitle>PSY</mat-card-subtitle>
-        <mat-card-subtitle>Koty</mat-card-subtitle>
-      </mat-card-header>
-      <img mat-card-image src="https://www.alejahandlowa.pl/wp-content/uploads/weterynarz-847x570.jpg" alt="Vet">
-      <mat-card-content>
-        <p>
-          The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-          A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-          bred for hunting.
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>
-      </mat-card-actions>
-    </mat-card>
+    <div class="row">
+      <div class="col-md-6">
+
+        <!--Doctor image, name-->
+        <mat-card class="m-2">
+          <mat-card-content>
+            <div class="row">
+              <div class="col-md-5">
+                <img src="https://miro.medium.com/max/700/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg" class="rounded" alt="..."
+                     height="200rem" width="200rem">
+              </div>
+              <div class="col-md-7">
+                <div class="mt-4">
+                  <p class="text-center font-weight-bold h4">mgr Michał Głuś</p>
+                  <hr>
+                  <p class="text-center font-weight-light"> Koty</p>
+                  <p class="text-center  font-weight-light"> Psy</p>
+                </div>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="m-2">
+          <h2>Informacje</h2>
+          <hr>
+              <p class="text-center"> <b>Godziny pracy</b>: 8:00 - 16:00 </p>
+              <p class="text-center"> <b>Czas trwania jednej wizyty: </b>: 30 min </p>
+              <p class="text-center"> <b>Koszt jednej wizyty </b>: 100 zł </p>
+        </mat-card>
+
+        <mat-card class="m-2">
+          <h2>Adres</h2>
+          <hr>
+          <p class="text-center"> Nowy Sącz ul. 3 Maja 3 </p>
+        </mat-card>
+
+        <mat-card class="m-2">
+          <h2>Kontakt</h2>
+          <hr>
+
+         <b>Email: </b> <a href="mailto:webdesign@example.com">lekarz@gmail.com</a> <br>
+          <b>Telefon: </b> <a href="tel:1-555-555-1212">555-555-1212</a>
+        </mat-card>
+
+      </div>
+      <div class="col-md-6">
+        <mat-card>
+          <h1><b>Umów wizytę</b></h1>
+          <hr>
+          <app-checkout></app-checkout>
+        </mat-card>
+      </div>
+    </div>
   </div>
 </div>
-<app-checkout></app-checkout>
+
 
 
 
